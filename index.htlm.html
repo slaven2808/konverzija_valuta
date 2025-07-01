@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AllConvert is a simple and fast online converter for currency, temperature, length, weight, speed, power, pressure, and digital storage." />
+  <meta name="keywords" content="unit converter, currency converter, length, weight, temperature, speed, digital units, pressure, power, data converter" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://allconvert.example.com/" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AllConvert - Universal Converter</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    label, select, input {
+      display: block;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      padding: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AllConvert</h1>
+    <p>Universal Converter: Currency, Length, Temperature & More</p>
+  </header>
+  <main>
+    <section>
+      <h2>Currency Converter</h2>
+      <label>Amount:</label>
+      <input type="number" id="currencyAmount" />
+      <label>From Currency:</label>
+      <select id="fromCurrency">
+        <option value="EUR">EUR - Euro</option>
+        <option value="USD">USD - US Dollar</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="CHF">CHF - Swiss Franc</option>
+        <option value="CAD">CAD - Canadian Dollar</option>
+        <option value="AUD">AUD - Australian Dollar</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="CNY">CNY - Chinese Yuan</option>
+        <option value="HRK">HRK - Croatian Kuna</option>
+        <option value="RSD">RSD - Serbian Dinar</option>
+        <option value="BAM">BAM - Bosnian Convertible Mark</option>
+        <option value="NOK">NOK - Norwegian Krone</option>
+        <option value="SEK">SEK - Swedish Krona</option>
+        <option value="DKK">DKK - Danish Krone</option>
+        <option value="PLN">PLN - Polish Zloty</option>
+      </select>
+      <label>To Currency:</label>
+      <select id="toCurrency">
+        <option value="USD">USD - US Dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="CHF">CHF - Swiss Franc</option>
+        <option value="CAD">CAD - Canadian Dollar</option>
+        <option value="AUD">AUD - Australian Dollar</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+        <option value="CNY">CNY - Chinese Yuan</option>
+        <option value="HRK">HRK - Croatian Kuna</option>
+        <option value="RSD">RSD - Serbian Dinar</option>
+        <option value="BAM">BAM - Bosnian Convertible Mark</option>
+        <option value="NOK">NOK - Norwegian Krone</option>
+        <option value="SEK">SEK - Swedish Krona</option>
+        <option value="DKK">DKK - Danish Krone</option>
+        <option value="PLN">PLN - Polish Zloty</option>
+      </select>
+      <button onclick="convertCurrency()">Convert</button>
+      <div class="result" id="currencyResult"></div>
+    </section>
+
+    <section>
+      <h2>Length Converter</h2>
+      <label>Enter value:</label>
+      <input type="number" id="lengthValue" />
+      <label>From:</label>
+      <select id="fromLength">
+        <option value="m">Meters</option>
+        <option value="km">Kilometers</option>
+        <option value="ft">Feet</option>
+        <option value="in">Inches</option>
+        <option value="mi">Miles</option>
+      </select>
+      <label>To:</label>
+      <select id="toLength">
+        <option value="m">Meters</option>
+        <option value="km">Kilometers</option>
+        <option value="ft">Feet</option>
+        <option value="in">Inches</option>
+        <option value="mi">Miles</option>
+      </select>
+      <button onclick="convertLength()">Convert</button>
+      <div class="result" id="lengthResult"></div>
+    </section>
+
+    <section>
+      <h2>Temperature Converter</h2>
+      <label>Enter temperature:</label>
+      <input type="number" id="tempValue" />
+      <label>From:</label>
+      <select id="fromTemp">
+        <option value="C">Celsius</option>
+        <option value="F">Fahrenheit</option>
+        <option value="K">Kelvin</option>
+      </select>
+      <label>To:</label>
+      <select id="toTemp">
+        <option value="C">Celsius</option>
+        <option value="F">Fahrenheit</option>
+        <option value="K">Kelvin</option>
+      </select>
+      <button onclick="convertTemperature()">Convert</button>
+      <div class="result" id="tempResult"></div>
+    </section>
+
+    <section>
+      <h2>Weight / Mass Converter</h2>
+      <input type="number" id="weightValue" placeholder="Enter value" />
+      <label>From:</label>
+      <select id="fromWeight">
+        <option value="kg">Kilograms</option>
+        <option value="g">Grams</option>
+        <option value="lb">Pounds</option>
+        <option value="oz">Ounces</option>
+        <option value="t">Tonnes</option>
+      </select>
+      <label>To:</label>
+      <select id="toWeight">
+        <option value="kg">Kilograms</option>
+        <option value="g">Grams</option>
+        <option value="lb">Pounds</option>
+        <option value="oz">Ounces</option>
+        <option value="t">Tonnes</option>
+      </select>
+      <button onclick="convertWeight()">Convert</button>
+      <div class="result" id="weightResult"></div>
+    </section>
+
+    <section>
+      <h2>Speed Converter</h2>
+      <input type="number" id="speedValue" placeholder="Enter value" />
+      <label>From:</label>
+      <select id="fromSpeed">
+        <option value="mps">Meters/sec</option>
+        <option value="kph">Km/h</option>
+        <option value="mph">Miles/h</option>
+        <option value="fps">Feet/sec</option>
+      </select>
+      <label>To:</label>
+      <select id="toSpeed">
+        <option value="mps">Meters/sec</option>
+        <option value="kph">Km/h</option>
+        <option value="mph">Miles/h</option>
+        <option value="fps">Feet/sec</option>
+      </select>
+      <button onclick="convertSpeed()">Convert</button>
+      <div class="result" id="speedResult"></div>
+    </section>
+
+    <section>
+      <h2>Power Converter</h2>
+      <input type="number" id="powerValue" placeholder="Enter value" />
+      <label>From:</label>
+      <select id="fromPower">
+        <option value="w">Watts</option>
+        <option value="kw">Kilowatts</option>
+        <option value="hp">Horsepower</option>
+      </select>
+      <label>To:</label>
+      <select id="toPower">
+        <option value="w">Watts</option>
+        <option value="kw">Kilowatts</option>
+        <option value="hp">Horsepower</option>
+      </select>
+      <button onclick="convertPower()">Convert</button>
+      <div class="result" id="powerResult"></div>
+    </section>
+
+    <section>
+      <h2>Pressure Converter</h2>
+      <input type="number" id="pressureValue" placeholder="Enter value" />
+      <label>From:</label>
+      <select id="fromPressure">
+        <option value="pa">Pascal</option>
+        <option value="bar">Bar</option>
+        <option value="atm">Atmosphere</option>
+        <option value="psi">PSI</option>
+      </select>
+      <label>To:</label>
+      <select id="toPressure">
+        <option value="pa">Pascal</option>
+        <option value="bar">Bar</option>
+        <option value="atm">Atmosphere</option>
+        <option value="psi">PSI</option>
+      </select>
+      <button onclick="convertPressure()">Convert</button>
+      <div class="result" id="pressureResult"></div>
+    </section>
+
+    <section>
+      <h2>Digital Storage Converter</h2>
+      <input type="number" id="dataValue" placeholder="Enter value" />
+      <label>From:</label>
+      <select id="fromData">
+        <option value="B">Bytes</option>
+        <option value="KB">Kilobytes</option>
+        <option value="MB">Megabytes</option>
+        <option value="GB">Gigabytes</option>
+        <option value="TB">Terabytes</option>
+      </select>
+      <label>To:</label>
+      <select id="toData">
+        <option value="B">Bytes</option>
+        <option value="KB">Kilobytes</option>
+        <option value="MB">Megabytes</option>
+        <option value="GB">Gigabytes</option>
+        <option value="TB">Terabytes</option>
+      </select>
+      <button onclick="convertData()">Convert</button>
+      <div class="result" id="dataResult"></div>
+    </section>
+  </main>
+
+  <script>
+    async function convertCurrency() {
+      const amount = document.getElementById('currencyAmount').value;
+      const from = document.getElementById('fromCurrency').value;
+      const to = document.getElementById('toCurrency').value;
+      const res = await fetch(`https://api.exchangerate.host/convert?from=${from}&to=${to}&amount=${amount}`);
+      const data = await res.json();
+      document.getElementById('currencyResult').innerText = `${amount} ${from} = ${data.result.toFixed(2)} ${to}`;
+    }
+
+    function convertLength() {
+      const value = parseFloat(document.getElementById('lengthValue').value);
+      const from = document.getElementById('fromLength').value;
+      const to = document.getElementById('toLength').value;
+      const factors = {
+        m: 1,
+        km: 1000,
+        ft: 0.3048,
+        in: 0.0254,
+        mi: 1609.34
+      };
+      const result = (value * factors[from]) / factors[to];
+      document.getElementById('lengthResult').innerText = `${value} ${from} = ${result.toFixed(4)} ${to}`;
+    }
+
+    function convertTemperature() {
+      const value = parseFloat(document.getElementById('tempValue').value);
+      const from = document.getElementById('fromTemp').value;
+      const to = document.getElementById('toTemp').value;
+      let celsius;
+      if (from === 'C') celsius = value;
+      else if (from === 'F') celsius = (value - 32) * 5/9;
+      else if (from === 'K') celsius = value - 273.15;
+
+      let result;
+      if (to === 'C') result = celsius;
+      else if (to === 'F') result = (celsius * 9/5) + 32;
+      else if (to === 'K') result = celsius + 273.15;
+
+      document.getElementById('tempResult').innerText = `${value}°${from} = ${result.toFixed(2)}°${to}`;
+    }
+
+    function convertWeight() {
+      const v = parseFloat(document.getElementById('weightValue').value);
+      const f = document.getElementById('fromWeight').value;
+      const t = document.getElementById('toWeight').value;
+      const kg = { kg: 1, g: 0.001, lb: 0.453592, oz: 0.0283495, t: 1000 };
+      const result = (v * kg[f]) / kg[t];
+      document.getElementById('weightResult').innerText = `${v} ${f} = ${result.toFixed(4)} ${t}`;
+    }
+
+    function convertSpeed() {
+      const v = parseFloat(document.getElementById('speedValue').value);
+      const f = document.getElementById('fromSpeed').value;
+      const t = document.getElementById('toSpeed').value;
+      const mps = { mps: 1, kph: 0.277778, mph: 0.44704, fps: 0.3048 };
+      const result = (v * mps[f]) / mps[t];
+      document.getElementById('speedResult').innerText = `${v} ${f} = ${result.toFixed(4)} ${t}`;
+    }
+
+    function convertPower() {
+      const v = parseFloat(document.getElementById('powerValue').value);
+      const f = document.getElementById('fromPower').value;
+      const t = document.getElementById('toPower').value;
+      const w = { w: 1, kw: 1000, hp: 745.7 };
+      const result = (v * w[f]) / w[t];
+      document.getElementById('powerResult').innerText = `${v} ${f} = ${result.toFixed(4)} ${t}`;
+    }
+
+    function convertPressure() {
+      const v = parseFloat(document.getElementById('pressureValue').value);
+      const f = document.getElementById('fromPressure').value;
+      const t = document.getElementById('toPressure').value;
+      const pa = { pa: 1, bar: 100000, atm: 101325, psi: 6894.76 };
+      const result = (v * pa[f]) / pa[t];
+      document.getElementById('pressureResult').innerText = `${v} ${f} = ${result.toFixed(4)} ${t}`;
+    }
+
+    function convertData() {
+      const v = parseFloat(document.getElementById('dataValue').value);
+      const f = document.getElementById('fromData').value;
+      const t = document.getElementById('toData').value;
+      const B = { B: 1, KB: 1024, MB: 1048576, GB: 1073741824, TB: 1099511627776 };
+      const result = (v * B[f]) / B[t];
+      document.getElementById('dataResult').innerText = `${v} ${f} = ${result.toFixed(4)} ${t}`;
+    }
+  </script>
+</body>
+</html>
